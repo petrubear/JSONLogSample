@@ -1,0 +1,29 @@
+curl -XDELETE 'http://localhost:9200/logdemo/'
+curl -XPUT 'http://localhost:9200/logdemo/'
+
+curl -XPUT 'http://localhost:9200/logdemo/demologs/_mapping' -d '
+{
+    "demologs" : {
+        "properties" : {
+            "@timestamp":{"type" : "date", "store" : true },
+            "source_host":{"type" : "string", "store" : true },
+            "file":{"type" : "string", "store" : true },
+            "method":{"type" : "string", "store" : true },
+            "level":{"type" : "string", "store" : true },
+            "line_number":{"type" : "string", "store" : true },
+            "thread_name":{"type" : "string", "store" : true },
+            "@version":{"type" : "string", "store" : true },
+            "logger_name":{"type" : "string", "store" : true },
+            "message":{"type" : "string", "store" : true },
+            "class":{"type" : "string", "store" : true },
+            "mdc":{
+                "properties" : {
+                    "correlationID":{"type" : "string", "store" : true }
+                }
+            }
+        }
+    }
+}
+'
+
+curl localhost:9200/logdemo/_mapping?pretty 
