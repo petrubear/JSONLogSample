@@ -46,5 +46,10 @@
           <artifactId>activemq-all</artifactId>
           <version>${activemq-version}</version>
       </dependency>
+      <dependency>
+          <groupId>org.elasticsearch</groupId>
+          <artifactId>elasticsearch</artifactId>
+          <version>${elastic-version}</version>
+      </dependency>
   </dependencies>
 </project>
